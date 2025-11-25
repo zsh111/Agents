@@ -3,7 +3,7 @@ from langchain_openai import ChatOpenAI
 from openai import api_key
 from agents import __version__
 from env import OPENAI_API_KEY, OPENAI_URL
-from tests.instance import Instance
+from instance import Instance
 
 
 def test_version():

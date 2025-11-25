@@ -1,7 +1,8 @@
 from langchain_openai import ChatOpenAI
 from langchain.chat_models import init_chat_model
 from openai import api_key, base_url
-from env import OPENAI_API_KEY, OPENAI_URL
+from tavily import TavilyClient
+from env import OPENAI_API_KEY, OPENAI_URL, TAVILY_API_KEY
 
 
 def get_api_key() -> str:
@@ -19,10 +20,15 @@ def Instance():
     )
     return llm
 
+
 def Singleton():
     return init_chat_model(
         model="deepseek-chat",
         model_provider="openai",
         api_key=get_api_key,
         base_url=OPENAI_URL,
-    ) 
+    )
+
+
+def Tavily_Instance():
+    return TavilyClient(api_key=TAVILY_API_KEY)
