@@ -1,6 +1,7 @@
 from langchain.agents import create_agent
 
 from instance import Instance, Tavily_Instance
+from tools.tool import testTool
 
 
 #只推荐这种描述方式进行注释，不适用注解方式
@@ -40,9 +41,13 @@ def web_search(query: str):
 继承basetool定义
 '''
 
-agent = create_agent(Instance(),
-                     tools=[
-                         send_email,
-                         web_search,
-                     ],
-                     system_prompt="你是一个有帮助的助手。你可以发送电子邮件。")
+myTool = testTool()
+
+agent = create_agent(
+    Instance(),
+    tools=[
+        #  send_email,
+        #  web_search,
+        myTool,
+    ],
+    system_prompt="你是一个有帮助的助手。你可以发送电子邮件。")
